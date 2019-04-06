@@ -250,7 +250,16 @@ public class FXMLBase extends AnchorPane {
     ////////////Menna implementation
     private void getNext() 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            if (resultSet.next()) {
+                showData();
+            } else {
+                resultSet.last();
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     private void getPrevious() 
@@ -283,6 +292,18 @@ public class FXMLBase extends AnchorPane {
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 
+    }
+    private void showData() {
+        try {
+            txt_id.setText(resultSet.getInt("id") + "");
+            txt_fname.setText(resultSet.getString("fname") + "");
+            txt_mname.setText(resultSet.getString("mname") + "");
+            txt_lname.setText(resultSet.getString("lname") + "");
+            txt_email.setText(resultSet.getString("email") + "");
+            txt_phone.setText(resultSet.getInt("phone") + "");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 }
     
