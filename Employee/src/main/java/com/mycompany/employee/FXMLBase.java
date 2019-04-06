@@ -283,6 +283,7 @@ public class FXMLBase extends AnchorPane {
     }
 
     private void update() {
+        
         if (flag == true) {
             try {
                 resultSet.moveToInsertRow();
