@@ -264,7 +264,16 @@ public class FXMLBase extends AnchorPane {
 
     private void getPrevious() 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            if (resultSet.previous()) {
+                showData();
+            } else {
+                resultSet.first();
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     private void getFirst() 
