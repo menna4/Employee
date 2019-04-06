@@ -351,12 +351,44 @@ public class FXMLBase extends AnchorPane {
         }
     }
 
-    private void delete() 
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   private void delete() {
+        try {
+            if(!lastRow)
+            {
+                if(!resultSet.isLast())  // if the selected Row not the last
+          {
+              System.out.println("Not Last");
+              resultSet.deleteRow();
+              getNext();
+             
+          }
+          else  // if the Selected Row last one
+          {
+              resultSet.deleteRow();
+              if(resultSet.first()) // has previous
+              {
+                  showData();
+                  System.out.println("Last and Have Pervious");
+              }
+              else
+              {
+                  lastRow=true;
+                System.out.println("Last and Only Row");
+                clearFields();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Empty");
+                alert.setHeaderText(null);
+                alert.setContentText("Empty ResultSet");
+                alert.showAndWait();
+              }
+          }
+            
+            }
 
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
-
    
 
 
