@@ -265,9 +265,14 @@ public class FXMLBase extends AnchorPane {
     
     ////////////////////abdelrahman implementation
 
-    private void getLast() 
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      public void getLast() {
+        try {
+            resultSet.last();
+            showData();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     private void addNewPerson() {
@@ -283,6 +288,19 @@ public class FXMLBase extends AnchorPane {
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 
+    }
+
+      private void showData() {
+        try {
+            txt_id.setText(resultSet.getInt("id") + "");
+            txt_fname.setText(resultSet.getString("fname") + "");
+            txt_mname.setText(resultSet.getString("mname") + "");
+            txt_lname.setText(resultSet.getString("lname") + "");
+            txt_email.setText(resultSet.getString("email") + "");
+            txt_phone.setText(resultSet.getInt("phone") + "");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 }
     
