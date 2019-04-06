@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -289,18 +290,65 @@ public class FXMLBase extends AnchorPane {
     
     ////////////////////abdelrahman implementation
 
-    private void getLast() 
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      private void getLast() {
+        try {
+            resultSet.last();
+            showData();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     private void addNewPerson() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        clearFields();
+        flag = true;
     }
 
-    private void update() 
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void update() {
+        
+        if (flag == true) {
+            try {
+                resultSet.moveToInsertRow();
+
+                resultSet.updateInt(1, Integer.parseInt(txt_id.getText()));
+                resultSet.updateString(2, txt_fname.getText());
+                resultSet.updateString(3, txt_mname.getText());
+                resultSet.updateString(4, txt_lname.getText());
+                resultSet.updateString(5, txt_email.getText());
+                resultSet.updateInt(6, Integer.parseInt(txt_phone.getText()));
+                resultSet.insertRow();
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Add New Row");
+                alert.setHeaderText(null);
+                alert.setContentText("Row Has been Added");
+
+                alert.showAndWait();
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            try {
+                resultSet.moveToCurrentRow();
+                //resultSet.updateInt(1, Integer.parseInt(txt_id.getText()));
+                resultSet.updateString(2, txt_fname.getText());
+                resultSet.updateString(3, txt_mname.getText());
+                resultSet.updateString(4, txt_lname.getText());
+                resultSet.updateString(5, txt_email.getText());
+                resultSet.updateInt(6, Integer.parseInt(txt_phone.getText()));
+                resultSet.updateRow();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Update Row");
+                alert.setHeaderText(null);
+                alert.setContentText("Row Has been Updated");
+                alert.showAndWait();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 
     private void delete() 
@@ -308,7 +356,12 @@ public class FXMLBase extends AnchorPane {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 
     }
-    private void showData() {
+
+   
+
+
+      private void showData() {
+
         try {
             txt_id.setText(resultSet.getInt("id") + "");
             txt_fname.setText(resultSet.getString("fname") + "");
@@ -320,6 +373,18 @@ public class FXMLBase extends AnchorPane {
             ex.printStackTrace();
         }
     }
+
+
+      private void clearFields() 
+      {
+        txt_id.clear();
+        txt_fname.clear();
+        txt_mname.clear();
+        txt_lname.clear();
+        txt_email.clear();
+        txt_phone.clear();
+    }
+
 }
     
     
