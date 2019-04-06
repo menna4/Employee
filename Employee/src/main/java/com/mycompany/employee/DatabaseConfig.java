@@ -23,7 +23,9 @@ public class DatabaseConfig {
         Properties properties = new Properties();
         OutputStream outputStream = null;
         try {
+            // Configuration db
             outputStream = new FileOutputStream("db.properties");
+             
             
             properties.setProperty("MYSQL_DB_URL", "jdbc:mysql://localhost:3306/schema_arafa");
             properties.setProperty("MYSQL_DB_USERNAME", "root");
