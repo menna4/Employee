@@ -29,7 +29,7 @@ public class DatabaseConfig {
             
             properties.setProperty("MYSQL_DB_URL", "jdbc:mysql://localhost:3306/clerk");
             properties.setProperty("MYSQL_DB_USERNAME", "root");
-            properties.setProperty("MYSQL_DB_PASSWORD", "Mennaahmed411");
+            properties.setProperty("MYSQL_DB_PASSWORD", "root");
             
             properties.store(outputStream, null);
         } catch (IOException io) 

@@ -29,7 +29,7 @@ public class AppLauncher extends Application{
         
         Scene scene = new Scene(root, 700, 500);
         
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("Empolyee Menu");
         primaryStage.setScene(scene);
         primaryStage.show();
         
