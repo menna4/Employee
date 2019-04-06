@@ -265,7 +265,7 @@ public class FXMLBase extends AnchorPane {
     
     ////////////////////abdelrahman implementation
 
-      public void getLast() {
+      private void getLast() {
         try {
             resultSet.last();
             showData();
@@ -276,7 +276,9 @@ public class FXMLBase extends AnchorPane {
     }
 
     private void addNewPerson() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        clearFields();
+        flag = true;
     }
 
     private void update() 
@@ -301,6 +303,16 @@ public class FXMLBase extends AnchorPane {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+    }
+
+      private void clearFields() 
+      {
+        txt_id.clear();
+        txt_fname.clear();
+        txt_mname.clear();
+        txt_lname.clear();
+        txt_email.clear();
+        txt_phone.clear();
     }
 }
     
