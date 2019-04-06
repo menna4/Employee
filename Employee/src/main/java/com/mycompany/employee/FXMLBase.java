@@ -1,13 +1,24 @@
 package com.mycompany.employee;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javax.sql.DataSource;
 
 public class FXMLBase extends AnchorPane {
 
+    DataSource dataSource;
+    Connection connection;
+    Statement statement;
+    ResultSet resultSet;
+    boolean flag = false;
+    boolean lastRow=false;
+    
     protected final Pane pane;
     protected final Label label;
     protected final Label label0;
