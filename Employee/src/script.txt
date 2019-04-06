@@ -1,0 +1,9 @@
+CREATE TABLE 'clerk'.'clerk' 
+(
+  'id' INT(11) NOT NULL,
+  'fname' VARCHAR(20) NULL,
+  'mname' VARCHAR(20) NULL,
+  'lname' VARCHAR(20) NULL,
+  'email' VARCHAR(45) NULL,
+  'phone' INT(11) NULL,
+  PRIMARY KEY ('id'));
