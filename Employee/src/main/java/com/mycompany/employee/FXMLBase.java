@@ -280,6 +280,7 @@ public class FXMLBase extends AnchorPane {
     {
         try {
             resultSet.first(); 
+            showData();
 
         } catch (SQLException ex) {
             ex.printStackTrace();
